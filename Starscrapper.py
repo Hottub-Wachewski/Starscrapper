@@ -369,19 +369,19 @@ class Characters:
         self._hitratio = self._oghitratio
         self._defence = self._ogdefence
 def random_encounter():
-    roll = random.randint(0, 100)
-    if roll == 1:
+    roll = random.randint(0, 70)
+    if roll <= 5:
         enemy = Characters("Colossus", [999, 10, 50, 5, 1], ["Purify", "void", "Time Roar"], [1, 2])
-    elif roll >= 70:
+    elif roll >= 50:
         enemy = Characters("mini golem", [50, 2, 20, 1, 25], ["void", "void", "void"], [1, 2])
     else:
         enemy = Characters("large golem", [70, 4, 30, 3, 50], ["Purify", "void", "void"], [1, 2])
     return enemy
 def random_encounter2():
-    roll = random.randint(0, 100)
-    if roll == 1:
+    roll = random.randint(0, 70)
+    if roll <= 5:
         enemy = Characters("Titan", [999, 30, 100, 10, 1], ["void", "void", "Purify"], [1, 2])
-    elif roll >= 70:
+    elif roll >= 50:
         enemy = Characters("bear", [30, 5, 35, 1, 25], ["void", "void", "void"], [1, 2])
     else:
         enemy = Characters("wolf", [90, 7, 30, 10, 50], ["void", "void", "void"], [1, 2])
