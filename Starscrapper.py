@@ -646,7 +646,7 @@ output_file.close()"""
 with open("Saves.txt", "r") as read_file:
     chapter=int(read_file.read())
 with open("Job.txt", "r") as read_file:
-    job=int(read_file.read())
+    job=str(read_file.read())
 with open("Name.txt", "r") as read_file:
     name=str(read_file.read())
 if chapter > 0:
@@ -657,7 +657,7 @@ if chapter > 0:
     elif job=="3":
         mc = Characters(name, [50, 3, 10, 2, 10], ["Transform", "Pain Remover", "Hit Policy"], [1, 2])
     elif job=="0":
-        mc = Characters("Hard", [25, 3, 10, 1, 20], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
+        mc = Characters("Hard", [40, 3, 10, 1, 20], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
     elif job=="5":
         mc = Characters("Easy", [100, 7, 20, 3, 30], ["Monster Form", "Fruit of God", "Point Blank"], [1, 2])
     elif job=="6":
@@ -730,7 +730,7 @@ if chapter == 0:
     elif job=="3":
         mc = Characters(name, [50, 3, 10, 2, 10], ["Transform", "Pain Remover", "Hit Policy"], [1, 2])
     elif job=="0":
-        mc = Characters("Hard", [20, 2, 10, 1, 20], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
+        mc = Characters("Hard", [40, 3, 10, 1, 20], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
     elif job=="5":
         mc = Characters("Easy", [100, 7, 20, 3, 30], ["Monster Form", "Fruit of God", "Point Blank"], [1, 2])
     elif job=="6":
