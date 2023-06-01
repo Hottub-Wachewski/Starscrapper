@@ -468,7 +468,26 @@ def mobile_city(mc, time):
                 if mc.get_health() > 0:
                     mc.levelup()
                     action = "0"
-                    mc.spend_gold(-3)
+                    if roll == 1 and enemy1 == "Vampire King":
+                        mc.spend_gold(-30)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    elif roll == 2 and enemy2 == "Vampire King":
+                        mc.spend_gold(-35)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    elif roll == 3 and enemy3 == "Vampire King":
+                        mc.spend_gold(-40)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    else:
+                        mc.spend_gold(-5)
                 else:
                     mc.reset()
                     day += 2
@@ -1133,7 +1152,7 @@ if chapter == 4:
     skip_engine(3)
     print("[your] silly")
     skip_engine(3)
-    print("[head] motral")
+    print("[head] mortal")
     skip_engine(3)
     print("[Narator?] I'll speak to you as we continue")
     skip_engine(5)
