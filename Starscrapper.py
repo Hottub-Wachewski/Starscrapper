@@ -435,7 +435,7 @@ def astral_space(mc):
 def mobile_city(mc, time):
     action = "0"
     day = 1
-    while mc.get_health() > 0 and day < time:
+    while day < time:
         while action != "1" and action != "2" and action != "3":
             print("<the ground seems to be glowing>")
             print("Option 1: Hunt")
@@ -469,6 +469,9 @@ def mobile_city(mc, time):
                     mc.levelup()
                     action = "0"
                     mc.spend_gold(-3)
+                else:
+                    mc.reset()
+                    day += 2
         elif action == "2":
             print("<you rest for the night>")
             mc.reset()
