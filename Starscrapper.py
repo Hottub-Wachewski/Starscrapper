@@ -1064,7 +1064,7 @@ if chapter == 3:
     skip_engine(4)
     print("<you decided to wonder around>")
     skip_engine(4)
-    forest_travel(mc, 60)
+    forest_travel(mc, 40)
     print("<you hear something big in the distance>")
     skip_engine(4)
     forest_travel(mc, 10)
