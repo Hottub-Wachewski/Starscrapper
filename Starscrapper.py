@@ -191,7 +191,7 @@ class Characters:
                     self._hitratio = useThis
                     print("HENSHIN")
                 elif self._skillist[skillet] == "Point Blank":
-                    enemy.damage(self._hitratio*self._defense, 777)
+                    enemy.damage(self._hitratio*self._defence, 777)
                 elif self._skillist[skillet] == "Timed Illusion":
                     self._health += enemy.get_attack()
                     self._hitratio += 3
