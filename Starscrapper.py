@@ -55,7 +55,7 @@ class Characters:
         print("Attack ",self._attack,"Hitratio ", self._hitratio,"Defence ", self._defence)
     def damage(self, damage, hitratio):
         roll = random.randint(0, hitratio)
-        if roll == hitratio:
+        if roll == hitratio or hitratio == 777:
             self._health-=damage * 1.5
             print("CRIT")
         elif roll >= self._defence:
@@ -191,7 +191,7 @@ class Characters:
                     self._hitratio = useThis
                     print("HENSHIN")
                 elif self._skillist[skillet] == "Point Blank":
-                    enemy.damage(self._hitratio, 100000000)
+                    enemy.damage(self._hitratio*self._defense, 777)
                 elif self._skillist[skillet] == "Timed Illusion":
                     self._health += enemy.get_attack()
                     self._hitratio += 3
