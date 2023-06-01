@@ -673,7 +673,7 @@ if chapter > 0:
     elif job == "6":
         knight = Characters("Knight", [999999, 999, 999, 99, 999], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     else:
-        knight = Characters("Knight", [30, 5, 10, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [40, 6, 15, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     with open("Starscrapper.txt", "r") as read_file:
         levelmx=int(read_file.read())
     with open("Knightlv.txt", "r") as read_file:
@@ -746,7 +746,7 @@ if chapter == 0:
     elif job == "6":
         knight = Characters("Knight", [999999, 999, 999, 99, 999], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     else:
-        knight = Characters("Knight", [30, 5, 10, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [40, 6, 15, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     knight.reset()
     knight.slevelup()
 saver(chapter)
