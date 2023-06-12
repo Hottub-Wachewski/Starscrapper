@@ -93,9 +93,39 @@ class Characters:
             output_file = open("Starscrapper.txt", "w")
             output_file.write(str(self._level))
             output_file.close()
+            output_file = open("ssat.txt", "w")
+            output_file.write(str(self._ogattack))
+            output_file.close()
+            output_file = open("ssdf.txt", "w")
+            output_file.write(str(self._ogdefence))
+            output_file.close()
+            output_file = open("sshp.txt", "w")
+            output_file.write(str(self._maxhealth))
+            output_file.close()
+            output_file = open("sshr.txt", "w")
+            output_file.write(str(self._oghitratio))
+            output_file.close()
+            output_file = open("ssmg.txt", "w")
+            output_file.write(str(self._maxmagic))
+            output_file.close()
         else:
             output_file = open("Knightlv.txt", "w")
             output_file.write(str(self._level))
+            output_file.close()
+            output_file = open("Kat.txt", "w")
+            output_file.write(str(self._ogattack))
+            output_file.close()
+            output_file = open("Kdf.txt", "w")
+            output_file.write(str(self._ogdefence))
+            output_file.close()
+            output_file = open("Khp.txt", "w")
+            output_file.write(str(self._maxhealth))
+            output_file.close()
+            output_file = open("Khr.txt", "w")
+            output_file.write(str(self._oghitratio))
+            output_file.close()
+            output_file = open("Kmg.txt", "w")
+            output_file.write(str(self._maxmagic))
             output_file.close()
     def levelup(self):
         self._exp+=76-self._level
@@ -671,38 +701,53 @@ with open("Job.txt", "r") as read_file:
     job=str(read_file.read())
 with open("Name.txt", "r") as read_file:
     name=str(read_file.read())
+with open("Starscrapper.txt", "r") as read_file:
+    levelmx=int(read_file.read())
+with open("Knightlv.txt", "r") as read_file:
+    klevelmx=int(read_file.read())
+with open("sshp.txt", "r") as read_file:
+    sshp=int(read_file.read())
+with open("ssat.txt", "r") as read_file:
+    ssat=int(read_file.read())
+with open("sshr.txt", "r") as read_file:
+    sshr=int(read_file.read())
+with open("ssdf.txt", "r") as read_file:
+    ssdf=int(read_file.read())
+with open("ssmg.txt", "r") as read_file:
+    ssmg=int(read_file.read())
+with open("khp.txt", "r") as read_file:
+    khp=int(read_file.read())
+with open("kat.txt", "r") as read_file:
+    kat=int(read_file.read())
+with open("khr.txt", "r") as read_file:
+    khr=int(read_file.read())
+with open("kdf.txt", "r") as read_file:
+    kdf=int(read_file.read())
+with open("kmg.txt", "r") as read_file:
+    kmg=int(read_file.read())
 if chapter > 0:
     if job=="1":
-        mc = Characters(name, [40, 3, 10, 1, 10], ["Transform", "Pain Remover", "Timed Illusion"], [1, 2])
+        mc = Characters(name, [sshp, ssat, sshr, ssdf, ssmg], ["Transform", "Pain Remover", "Timed Illusion"], [levelmx, 2])
     elif job=="2":
-        mc = Characters(name, [40, 5, 12, 1, 5], ["Transform", "Pain Remover", "Mystic Point"], [1, 2])
+        mc = Characters(name, [sshp, ssat, sshr, ssdf, ssmg], ["Transform", "Pain Remover", "Mystic Point"], [levelmx, 2])
     elif job=="3":
-        mc = Characters(name, [50, 3, 10, 2, 10], ["Transform", "Pain Remover", "Hit Policy"], [1, 2])
+        mc = Characters(name, [sshp, ssat, sshr, ssdf, ssmg], ["Transform", "Pain Remover", "Hit Policy"], [levelmx, 2])
     elif job=="0":
-        mc = Characters("Hard", [40, 3, 10, 1, 20], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
+        mc = Characters("Hard", [sshp, ssat, sshr, ssdf, ssmg], ["Transform", "Pain Remover", "Over Joyed Trick"], [levelmx, 2])
     elif job=="5":
-        mc = Characters("Easy", [100, 7, 20, 3, 30], ["Monster Form", "Fruit of God", "Point Blank"], [1, 2])
+        mc = Characters("Easy", [sshp, ssat, sshr, ssdf, ssmg], ["Monster Form", "Fruit of God", "Point Blank"], [levelmx, 2])
     elif job=="6":
-        mc = Characters("Test", [999999, 999, 999, 9, 999], ["Pain Remover", "Point Blank", "Point Blank"], [1, 2])
+        mc = Characters("Test", [sshp, ssat, sshr, ssdf, ssmg], ["Pain Remover", "Point Blank", "Point Blank"], [levelmx, 2])
     else:
-        mc = Characters(name, [40, 10, 15, 1, 10], ["Transform", "Pain Remover", "Point Blank"], [1, 2])
-    finalboss = Characters("Overlord", [50, 5, 15, 1, 30], ["void", "void", "God Scape"], [1, 2])
+        mc = Characters(name, [sshp, ssat, sshr, ssdf, ssmg], ["Transform", "Pain Remover", "Point Blank"], [levelmx, 2])
     if job == "5":
-        knight = Characters("Knight", [60, 8, 20, 3, 20], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [khp, kat, khr, kdf, kmg], ["Transform", "Pain Remover", "Deathless Trick"], [klevelmx, 2])
     elif job == "6":
-        knight = Characters("Knight", [999999, 999, 999, 99, 999], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [khp, kat, khr, kdf, kmg], ["Transform", "Pain Remover", "Deathless Trick"], [klevelmx, 2])
     else:
-        knight = Characters("Knight", [40, 6, 15, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
-    with open("Starscrapper.txt", "r") as read_file:
-        levelmx=int(read_file.read())
-    with open("Knightlv.txt", "r") as read_file:
-        klevelmx=int(read_file.read())
-    while mc.get_level() < levelmx:
-        mc.slevelup()
-        mc.reset()
-    while knight.get_level() < klevelmx:
-        knight.slevelup()
-        knight.reset()
+        knight = Characters("Knight", [khp, kat, khr, kdf, kmg], ["Transform", "Pain Remover", "Deathless Trick"], [klevelmx, 2])
+    mc.reset()
+    knight.reset()
 if chapter == 0:
     theStarScrapper = Characters("StarScrapper", [999999, 3, 100, 10, 333333], ["Purify", "void", "Time Roar"], [1, 2])
     mc = Characters("Player", [200, 35, 100, 10, 20], ["Point Blank", "Hit Policy", "Timed Illusion"], [1, 2])
