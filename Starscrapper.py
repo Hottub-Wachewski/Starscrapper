@@ -258,6 +258,7 @@ class Characters:
                 elif self._skillist[skillet] == "Great Regen":
                     self._magic += 4
                     self._health += self._magic
+                    self._magic -= 6
             elif action == "4":
                 print("[???] you are a silly fool")
                 time.sleep(0.9)
