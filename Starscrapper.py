@@ -175,6 +175,7 @@ class Characters:
             output_file.write(str(self._level))
             output_file.close()
     def battle(self, enemy):
+        onebit = 1
         skillet = 0
         while self._health>0 and enemy.get_health()>0:
             time.sleep(0.8)
@@ -349,6 +350,21 @@ class Characters:
                 print("[Enemy]: Bite")
                 self._health -= 25
                 enemy.damage(-50, 100000000)
+            elif enemy.get_skills()[enemyskillet] == "Ocean Wide":
+                print("[Enemy]: Ocean Heal")
+                enemy.damage(-self._attack, 777)
+            elif enemy.get_skills()[enemyskillet] == "Onebit":
+                print("[Enemy]: THE ONE BIIIIIIIIIIIT!!!")
+                roll = random.randint(0, enemy.get_hitratio())
+                if roll>self._defence:
+                    print("Big Hit")
+                    self._health-=onebit
+                    self._gold += onebit
+                    onebit = onebit*2
+                else:
+                    print("Big Heal")
+                    enemy.damage(onebit, 100000000)
+                    self._attack -= onebit
             time.sleep(0.6)
             if self._party > 0:
                 if self._partyskills[skillskillet] == "Regen":
@@ -462,6 +478,19 @@ def random_encounter4():
         enemy = Characters("Shadow", [50, 8, 35, 1, 25], ["void", "void", "void"], [1, 2])
     else:
         enemy = Characters("Shadow Fiend", [60, 5, 40, 10, 50], ["void", "void", "void"], [1, 2])
+    return enemy
+def random_encounter5():
+    roll = random.randint(0, 100)
+    if roll == 1:
+        enemy = Characters("Pirate Lord", [99999, 1, 999, 999, 10000], ["Onebit", "Ocean Wide", "Onebit"], [1, 2])
+    elif roll >= 60:
+        enemy = Characters("Shark", [80, 5, 50, 5, 40], ["void", "void", "Aura Force"], [1, 2])
+    elif roll >= 40:
+        enemy = Characters("Kraken", [100, 8, 35, 35, 25], ["void", "Aura Force", "Purify"], [1, 2])
+    elif roll >= 20:
+        enemy = Characters("Vicious Swarm", [10, 20, 10, 10, 5], ["void", "void", "void"], [1, 2])
+    else:
+        enemy = Characters("Squid", [50, 3, 50, 50, 50], ["void", "void", "void"], [1, 2])
     return enemy
 def astral_space(mc):
     action = "0"
@@ -776,6 +805,18 @@ if chapter > 0:
 if chapter == 0:
     theStarScrapper = Characters("StarScrapper", [999999, 3, 100, 10, 333333], ["Purify", "void", "Time Roar"], [1, 2])
     mc = Characters("Player", [200, 35, 100, 10, 20], ["Point Blank", "Hit Policy", "Timed Illusion"], [1, 2])
+    print("<you open your eyes to see the dark world>")
+    skip_engine(5)
+    print("<you can't see much, there is no light>")
+    skip_engine(5)
+    print("<you get up and walk down the hall>")
+    skip_engine(4)
+    print("<there is a soft light ahead>")
+    skip_engine(4)
+    print("<outside the window stands a world>")
+    skip_engine(4)
+    print("<you hear a voice>")
+    skip_engine(3)
     print("[voice1] hello there player")
     skip_engine(3)
     print("[voice2] we are here to assist you")
@@ -788,7 +829,7 @@ if chapter == 0:
     skip_engine(3)
     print("[voice3] to attack press 1")
     print("[voice2] to use your powers press 2")
-    print("[voice1] never press 3")
+    print("[voice1] to identify your enemy 3")
     skip_engine(5)
     i = 0
     enemy = Characters("puppet", [100, 5, 15, 10, 20], ["void", "void", "void"], [1, 2])
@@ -807,6 +848,8 @@ if chapter == 0:
     name=input("name: ")
     print("[voices] what a wonderful name")
     skip_engine(3)
+    print("[voices] "+name+" welcome to the star scrapper")
+    skip_engine(4)
     print("[voices] now to decide your powers")
     print("Option 0: <Hard Mode>")
     print("Option 1: Illusionist")
@@ -831,11 +874,13 @@ if chapter == 0:
         mc = Characters(name, [40, 10, 15, 1, 10], ["Transform", "Pain Remover", "Point Blank"], [1, 2])
     finalboss = Characters("Overlord", [50, 5, 15, 1, 30], ["void", "void", "God Scape"], [1, 2])
     if job == "5":
-        knight = Characters("Knight", [60, 8, 20, 3, 20], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [65, 8, 20, 4, 20], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+    if job == "0":
+        knight = Characters("Knight", [30, 4, 10, 2, 5], ["Transform", "Pain Remover", "Over Joyed Trick"], [1, 2])
     elif job == "6":
         knight = Characters("Knight", [999999, 999, 999, 99, 999], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     else:
-        knight = Characters("Knight", [40, 6, 15, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
+        knight = Characters("Knight", [50, 6, 15, 2, 10], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     knight.reset()
     knight.slevelup()
 saver(chapter)
@@ -857,13 +902,13 @@ if chapter == 0:
     skip_engine(10)
     print("<Tutorial Over>")
     skip_engine(3)
-    print("<this world is filled with all different people")
+    print("<this world is filled with all different people>")
     skip_engine(3)
-    print("good, bad, heroes, villains")
+    print("<good, bad, heroes, villains>")
     skip_engine(3)
-    print("some people have magic, others don't")
+    print("<some people have magic, others don't>")
     skip_engine(3)
-    print("who are you?>")
+    print("<who are you?>")
     skip_engine(5)
     chapter += 1
 saver(chapter)
