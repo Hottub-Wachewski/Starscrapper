@@ -178,6 +178,7 @@ class Characters:
             self._skillist[3] = "Star Blaster"
     def battle(self, enemy):
         skillet = 0
+        onebit = 1
         while self._health>0 and enemy.get_health()>0:
             time.sleep(0.8)
             if skillet == 0:
@@ -351,6 +352,44 @@ class Characters:
                 print("[Enemy]: Bite")
                 self._health -= 25
                 enemy.damage(-50, 100000000)
+            elif enemy.get_skills()[enemyskillet] == "One Bit":
+                print("[Enemy]: THE ONE BIIIIIIT!!!")
+                onebit = onebit + 1
+                roll = random.randint(0, onebit)
+                if roll>self._defence:
+                    print("Hit")
+                    self._health-=onebit
+                    enemy.get_skills()[enemyskillet] = "Rest"
+                    print("Have a moment of rest")
+                else:
+                    print("Miss")
+                    enemy.damage(onebit * -1, enemy.get_hitratio()*onebit)
+                    self._gold += onebit
+                    enemy.get_skills()[enemyskillet] = "Endless"
+                    print("A storm is coming")
+            elif enemy.get_skills()[enemyskillet] == "Stock Pile":
+                print("[Enemy]: Stock Pile")
+                onebit = onebit * 2
+                enemy.get_skills()[enemyskillet] = "Rest"
+                print("Have a moment of rest")
+            elif enemy.get_skills()[enemyskillet] == "Endless":
+                print("[Enemy]: Endless Tide")
+                self._health -= onebit
+                self._gold += onebit
+                onebit = onebit * 10
+                enemy.get_skills()[enemyskillet] = "Rest"
+                print("Have a moment of rest")
+            elif enemy.get_skills()[enemyskillet] == "Rest":
+                print("The calm before the storm")
+                tithe = random.randint(1, 5)
+                if tithe == 1:
+                    enemy.get_skills()[enemyskillet] = "Rest"
+                elif tithe == 2:
+                    enemy.get_skills()[enemyskillet] = "Endless"
+                elif tithe == 3:
+                    enemy.get_skills()[enemyskillet] = "Stock Pile"
+                else:
+                    enemy.get_skills()[enemyskillet] = "onebit"
             time.sleep(0.6)
             if self._party > 0:
                 if self._partyskills[skillskillet] == "Regen":
