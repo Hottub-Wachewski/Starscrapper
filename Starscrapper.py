@@ -352,7 +352,7 @@ class Characters:
                 print("[Enemy]: Bite")
                 self._health -= 25
                 enemy.damage(-50, 100000000)
-            elif enemy.get_skills()[enemyskillet] == "One Bit":
+            elif enemy.get_skills()[enemyskillet] == "onebit":
                 print("[Enemy]: THE ONE BIIIIIIT!!!")
                 onebit = onebit + 1
                 roll = random.randint(0, onebit)
