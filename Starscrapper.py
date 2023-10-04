@@ -128,7 +128,7 @@ class Characters:
             output_file.write(str(self._maxmagic))
             output_file.close()
     def levelup(self):
-        self._exp+=76-self._level
+        self._exp+=100-self._level
         if self._exp >= 100:
             print("LVL UP")
             time.sleep(0.3)
@@ -166,6 +166,16 @@ class Characters:
             output_file = open("Knightlv.txt", "w")
             output_file.write(str(self._level))
             output_file.close()
+        if self._level >= 20:
+            self._skillist[0] = "Monster Form"
+        if self._level >= 25:
+            self._skillist[1] = "Great Regen"
+        if self._level >= 55:
+            self._skillist[1] = "Fruit of God"
+        if self._level >= 65:
+            self._skillist[0] = "Star Scrapper"
+        if self._level >= 80:
+            self._skillist[3] = "Star Blaster"
     def battle(self, enemy):
         skillet = 0
         while self._health>0 and enemy.get_health()>0:
