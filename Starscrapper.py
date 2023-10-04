@@ -487,8 +487,10 @@ def random_encounter2():
     return enemy
 def random_encounter3():
     roll = random.randint(0, 91)
-    if roll == 1:
+    if roll == 2:
         enemy = Characters("Vampire King", [9999, 50, 50, 10, 666], ["Purify", "Vamp Bite", "Purify"], [1, 2])
+    elif roll == 1:
+        enemy = Characters("Lord of Vampire Thieves, 'Blood Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
     elif roll >= 60:
         enemy = Characters("Slime", [80, 3, 50, 10, 60], ["void", "void", "Purify"], [1, 2])
     elif roll >= 30:
@@ -500,6 +502,8 @@ def random_encounter4():
     roll = random.randint(0, 91)
     if roll == 1:
         enemy = Characters("Shadow King", [9999, 30, 50, 10, 666], ["Purify", "Purify", "Purify"], [1, 2])
+    elif roll == 2:
+        enemy = Characters("Lord of Shadow Thieves, 'Shade Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
     elif roll >= 60:
         enemy = Characters("Shadowling", [70, 3, 40, 10, 60], ["void", "void", "Purify"], [1, 2])
     elif roll >= 30:
