@@ -464,6 +464,7 @@ class Characters:
         self._attack = self._ogattack
         self._hitratio = self._oghitratio
         self._defence = self._ogdefence
+enemy = Characters("Lord of Sea Thieves", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
 def random_encounter():
     roll = random.randint(0, 70)
     if roll <= 5:
