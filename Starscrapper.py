@@ -179,6 +179,7 @@ class Characters:
     def battle(self, enemy):
         skillet = 0
         onebit = 1
+        status = []
         while self._health>0 and enemy.get_health()>0:
             time.sleep(0.8)
             if skillet == 0:
@@ -228,6 +229,9 @@ class Characters:
                 elif self._skillist[skillet] == "Mystic Point":
                     print("A Firey Explosion Apears")
                     enemy.damage(self._attack*2, self._hitratio)
+                    roll = random.randint(1,5)
+                    if roll == 5:
+                        status.insert(0 , "burn-enemy")
                 elif self._skillist[skillet] == "Transform":
                     useThis = self._defence
                     self._defence = self._hitratio
@@ -394,7 +398,7 @@ class Characters:
             if self._party > 0:
                 if self._partyskills[skillskillet] == "Regen":
                     print("[Effect]: Regen")
-                    self._health += 2
+                    status.insert(0, "regen-self")
                 elif self._partyskills[skillskillet] == "Hit Boost":
                     print("[Effect]: Hit Chance Up")
                     self._hitratio += 3
@@ -402,24 +406,25 @@ class Characters:
                     print("[Effect]: Don's Stone Face")
                     print("<your opponent slows down>")
                     print("<your magic raises>")
+                    status.insert(0, "stick-enemy")
                     self._defence += 1
                     self._hitratio += 1
                     self._magic += 2
                 elif self._partyskills[skillskillet] == "Dark Mode":
                     print("[Effect]: Fafnir's Dragon Mode")
                     print("<your stats raise sharply>")
+                    status.insert(0, "stick-enemy")
                     self._defence += 1
-                    self._hitratio += 2
                     self._attack += 2
                 elif self._partyskills[skillskillet] == "The Hunt":
                     print("[Effect]: Narator?'s Cursed Skin?")
                     self._attack += 3
-                    self._hitratio += 5
+                    self._hitratio += 7
                     self._partyskills[skillskillet] = "Big Bang"
                 elif self._partyskills[skillskillet] == "Big Bang":
                     print("[Effect]: Narator?'s Cursed Skin?")
-                    self._attack += 6
-                    self._hitratio += 10
+                    self._magic += 3
+                    self._defence += 5
                     self._partyskills[skillskillet] = "The Hunt"
                 elif self._partyskills[skillskillet] == "Explosion":
                     print("[Effect]: EXPLOSION???")
@@ -428,12 +433,13 @@ class Characters:
                 elif self._partyskills[skillskillet] == "Team Attack":
                     print("[Effect]: Bonus Round")
                     print("[Type]: Team Attack")
-                    enemy.damage(self._attack*4, self._hitratio*4)
+                    enemy.damage(self._attack*3, self._hitratio*3)
                 elif self._partyskills[skillskillet] == "Break":
                     print("[Effect]: Bonus Round")
                     roll = random.randint(1, 4)
                     if roll == 1:
                         print("[Type]: Limit Break")
+                        status.insert(0, "burn-enemy")
                         self._attack += 5
                         self._hitratio += 5
                     elif roll == 2:
@@ -441,13 +447,40 @@ class Characters:
                         enemy.damage(self._attack*2, self._hitratio*2)
                     elif roll == 3:
                         print("[Type]: Brave")
+                        status.insert(0, "stick-enemy")
                         self._attack += 5
                         enemy.damage(self._attack, self._hitratio)
                     else:
                         print("[Type]: Over Throw")
+                        status.insert(0, "regen-self")
                         self._defence += 2
                         self._hitratio += 5
                 time.sleep(0.3)
+            for i in status:
+                if status[i] == "burn-enemy":
+                    print("burned - enemy")
+                    enemy.damage(self._defence, 777)
+                if status[i] == "regen-enemy":
+                    print("heal - enemy")
+                    enemy.damage(self._defence * -1, 777)
+                if status[i] == "stick-enemy":
+                    print("stick - enemy")
+                    self._hitratio += 2
+                    self._defence += 1
+                if status[i] == "burn-self":
+                    print("burned - player")
+                    self._health -= self._defence
+                if status[i] == "regen-self":
+                    print("heal - self")
+                    self._health += self._defence
+                    if self._health > self._maxhealth:
+                        self._health = self._maxhealth
+                if status[i] == "stick-self":
+                    print("stick - self")
+                    self._hitratio -= 1
+                    if self._hitratio <=0:
+                        self._hitratio = 1
+            status = []
             if self._party > 0 and enemy.get_health() < enemy.get_magic():
                 roll = random.randint(1, 10)
                 if roll == 5:
