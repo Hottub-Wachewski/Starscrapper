@@ -467,7 +467,9 @@ class Characters:
 enemy = Characters("Lord of Sea Thieves", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
 def random_encounter():
     roll = random.randint(0, 70)
-    if roll <= 5:
+    if roll == 1:
+        enemy = Characters("Lord of Sea Thieves, 'Cotton Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
+    elif roll <= 5:
         enemy = Characters("Colossus", [999, 10, 50, 5, 1], ["Purify", "void", "Time Roar"], [1, 2])
     elif roll >= 50:
         enemy = Characters("mini golem", [50, 2, 20, 1, 25], ["void", "void", "void"], [1, 2])
