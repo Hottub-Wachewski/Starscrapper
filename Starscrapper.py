@@ -220,10 +220,12 @@ class Characters:
                     else:
                         self._health -= 4
                 if self._skillist[skillet] == "Hit Policy":
+                    print("Great Magic Absorbs You")
                     self._health += self._maxhealth//2
                     if self._health > self._maxhealth:
                         self._health = self._maxhealth
                 elif self._skillist[skillet] == "Mystic Point":
+                    print("A Firey Explosion Apears")
                     enemy.damage(self._attack*2, self._hitratio)
                 elif self._skillist[skillet] == "Transform":
                     useThis = self._defence
@@ -231,44 +233,58 @@ class Characters:
                     self._hitratio = useThis
                     print("HENSHIN")
                 elif self._skillist[skillet] == "Point Blank":
+                    print("Bang!")
                     enemy.damage(self._hitratio*self._defence, 777)
                 elif self._skillist[skillet] == "Timed Illusion":
+                    print("Just In Time")
                     self._health += enemy.get_attack()
                     self._hitratio += 3
                 elif self._skillist[skillet] == "Pain Remover":
+                    print("It Reads 'takes the edge off'")
                     self._health += self._magic
                     if self._health > self._maxhealth:
                         self._health = self._maxhealth
                 elif self._skillist[skillet] == "Over Joyed Trick":
+                    print("Yay!")
                     self._health = self._maxhealth//2
                     self._hitratio += 100
                     self._defence = 0
                 elif self._skillist[skillet] == "Monster Form":
+                    print("You Grow Ever So Monsterous")
+                    enemy.damage(self._attack, self._hitratio)
+                    self._attack += 10
                     self._hitratio += 10
-                    self._defence += 1
+                    self._defence += 2
                 if self._skillist[skillet] == "Fruit of God":
+                    print("The Taste of Sin")
+                    self._defence += 1
                     self._health += self._magic*2
                     if self._health > self._maxhealth:
                         self._health = self._maxhealth
                 elif self._skillist[skillet] == "Deathless Trick":
+                    print("I Will Never Fall")
                     self._health += self._hitratio
                     self._hitratio += self._defence
                 elif self._skillist[skillet] == "Star Scrapper":
-                    self._hitratio += 10
+                    print("Everything Slows Down")
+                    self._hitratio += 15
                     self._defence += 3
                     self._magic -= 2
                     self._health -= 2
                 elif self._skillist[skillet] == "Star Blaster":
+                    print("BANG!!!")
                     self._attack += 10
                     self._hitratio += 10
-                    enemy.damage(self._attack*2, self._hitratio*10)
+                    enemy.damage(self._attack, self._hitratio*10)
                     self._hitratio -= 10
                     self._attack += 10
                     self._magic -= 2
+                    self._health -= 2
                 elif self._skillist[skillet] == "Great Regen":
-                    self._magic += 4
+                    print("A Great Energy Covers You")
+                    self._magic += 6
                     self._health += self._magic
-                    self._magic -= 6
+                    self._magic -= 8
             elif action == "4":
                 print("[???] you are a silly fool")
                 time.sleep(0.9)
