@@ -167,7 +167,7 @@ class Characters:
         if self._level >= 65:
             self._skillist[0] = "Star Scrapper"
         if self._level >= 80:
-            self._skillist[3] = "Star Blaster"
+            self._skillist[2] = "Star Blaster"
     def saveme(self):
         if self._name!="Knight":
             output_file = open("Starscrapper.txt", "w")
