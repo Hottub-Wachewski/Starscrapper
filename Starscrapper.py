@@ -158,6 +158,17 @@ class Characters:
                     self._maxmagic += 5
                     print("<magic up>")
                     time.sleep(0.3)
+        if self._level >= 20:
+            self._skillist[0] = "Monster Form"
+        if self._level >= 25:
+            self._skillist[1] = "Great Regen"
+        if self._level >= 55:
+            self._skillist[1] = "Fruit of God"
+        if self._level >= 65:
+            self._skillist[0] = "Star Scrapper"
+        if self._level >= 80:
+            self._skillist[3] = "Star Blaster"
+    def saveme(self):
         if self._name!="Knight":
             output_file = open("Starscrapper.txt", "w")
             output_file.write(str(self._level))
@@ -196,16 +207,6 @@ class Characters:
             output_file = open("Kmg.txt", "w")
             output_file.write(str(self._maxmagic))
             output_file.close()
-        if self._level >= 20:
-            self._skillist[0] = "Monster Form"
-        if self._level >= 25:
-            self._skillist[1] = "Great Regen"
-        if self._level >= 55:
-            self._skillist[1] = "Fruit of God"
-        if self._level >= 65:
-            self._skillist[0] = "Star Scrapper"
-        if self._level >= 80:
-            self._skillist[3] = "Star Blaster"
     def battle(self, enemy):
         skillet = 0
         onebit = 1
@@ -779,6 +780,104 @@ def shadow_city(mc, time):
                 print("<you leave>")
             else:
                 print("<you don't have enough gold>")
+def aquatic_city(mc, time):
+    action = "0"
+    day = 1
+    while day < time:
+        while action != "1" and action != "2" and action != "3":
+            print("<the ground seems to be glowing>")
+            print("Option 1: Hunt")
+            print("Option 2: Rest")
+            print("Option 3: Shop")
+            action = input("The Hero Will: ")
+        if action == "1":
+            action = "0"
+            print("<you check the hunter board>")
+            enemy1 = random_encounter()
+            enemy2 = random_encounter3()
+            enemy3 = random_encounter4()
+            print("[Hunting Board]: " + enemy1.get_name() + "-" + enemy2.get_name() + "-" + enemy3.get_name())
+            print("<do you wish to go hunting?>")
+            print("Option 1: No")
+            print("Option 2: Yes")
+            act = input("what will you do? ")
+            if act == "1":
+                print("<you wait for tomorrow>")
+                mc.reset()
+                day += 1
+            else:
+                roll = random.randint(1, 3)
+                if roll == 1:
+                    mc.battle(enemy1)
+                elif roll == 2:
+                    mc.battle(enemy2)
+                else:
+                    mc.battle(enemy3)
+                if mc.get_health() > 0:
+                    mc.levelup()
+                    action = "0"
+                    if roll == 1 and enemy1 == "Lord of Sea Thieves, 'Cotton Hat'":
+                        mc.spend_gold(-35)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    elif roll == 2 and enemy2 == "Lord of Vampire Thieves, 'Blood Hat'":
+                        mc.spend_gold(-35)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    elif roll == 3 and enemy3 == "Lord of Shadow Thieves, 'Shade Hat'":
+                        mc.spend_gold(-35)
+                        mc.levelup()
+                        mc.levelup()
+                        mc.levelup()
+                    else:
+                        mc.spend_gold(-5)
+                else:
+                    mc.reset()
+                    day += 2
+        elif action == "2":
+            print("<you rest for the night>")
+            mc.reset()
+            day += 1
+            print("HP:", mc.get_health())
+            mc.get_test()
+            action = "0"
+        else:
+            action = "0"
+            print("<you head to the shop>")
+            skip_engine(3)
+            print("Gold:", mc.get_gold())
+            print("Option 1: Feast-5gold")
+            print("Option 2: Health Up-10gold")
+            print("Option 3: Quick Train-10gold")
+            print("Option 4: Challenge Beast-100gold")
+            print("Option 5: Leave")
+            act = input("What will you buy? ")
+            if act == "1" and mc.get_gold() >= 5:
+                print("<you eat a nice feast>")
+                mc.spend_gold(5)
+                mc.reset()
+            elif act == "2" and mc.get_gold() >= 10:
+                print("<you raise your stamina>")
+                mc.spend_gold(10)
+                mc.increase_health()
+            elif act == "3" and mc.get_gold() >= 10:
+                print("<you raise your strength>")
+                mc.spend_gold(10)
+                mc.increase_attack()
+                mc.increase_hitratio()
+            elif act == "4" and mc.get_gold() >= 100:
+                mc.spend_gold(100)
+                print("<you challenge the beast>")
+                theStarScrapper = Characters("StarScrapper", [999999, 777, 100, 10, 333333], ["Purify", "Purify", "Time Roar2"], [1, 2])
+                mc.battle(theStarScrapper)
+                if mc.get_health() > 0:
+                    mc.spend_gold(-500)
+            elif act == "5":
+                print("<you leave>")
+            else:
+                print("<you don't have enough gold>")
 def forest_travel(mc, distance):
     action = "0"
     feet = 0
@@ -825,6 +924,8 @@ def saver(chapter):
     output_file = open("Job.txt", "w")
     output_file.write(str(job))
     output_file.close()
+    mc.saveme()
+    knight.saveme()
 """output_file = open("Saves.txt", "w")
 output_file.close()
 output_file = open("Starscrapper.txt", "w")
