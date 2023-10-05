@@ -128,8 +128,8 @@ class Characters:
             output_file.write(str(self._maxmagic))
             output_file.close()
     def levelup(self):
-        self._exp+=100-self._level
-        if self._exp >= 100:
+        self._exp+=90-self._level
+        if self._exp >= 200:
             print("LVL UP")
             time.sleep(0.3)
             self._level += 1
