@@ -409,7 +409,7 @@ class Characters:
                 print("Have a moment of rest")
             elif enemy.get_skills()[enemyskillet] == "Endless":
                 print("[Enemy]: Endless Tide")
-                self._health -= onebit
+                self._health += onebit
                 self._gold += onebit
                 onebit = onebit * 10
                 enemy.get_skills()[enemyskillet] = "Rest"
