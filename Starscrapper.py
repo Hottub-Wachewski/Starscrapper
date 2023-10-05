@@ -781,11 +781,12 @@ def shadow_city(mc, time):
             else:
                 print("<you don't have enough gold>")
 def aquatic_city(mc, time):
+    print("<welcome to my mind>")
     action = "0"
     day = 1
     while day < time:
         while action != "1" and action != "2" and action != "3":
-            print("<the ground seems to be glowing>")
+            print("<the ground seems to be glowing brightly>")
             print("Option 1: Hunt")
             print("Option 2: Rest")
             print("Option 3: Shop")
@@ -817,16 +818,19 @@ def aquatic_city(mc, time):
                     mc.levelup()
                     action = "0"
                     if roll == 1 and enemy1 == "Lord of Sea Thieves, 'Cotton Hat'":
+                        print("<did he escape?>")
                         mc.spend_gold(-35)
                         mc.levelup()
                         mc.levelup()
                         mc.levelup()
                     elif roll == 2 and enemy2 == "Lord of Vampire Thieves, 'Blood Hat'":
+                        print("<did he escape?>")
                         mc.spend_gold(-35)
                         mc.levelup()
                         mc.levelup()
                         mc.levelup()
                     elif roll == 3 and enemy3 == "Lord of Shadow Thieves, 'Shade Hat'":
+                        print("<did he escape?>")
                         mc.spend_gold(-35)
                         mc.levelup()
                         mc.levelup()
@@ -870,7 +874,7 @@ def aquatic_city(mc, time):
             elif act == "4" and mc.get_gold() >= 100:
                 mc.spend_gold(100)
                 print("<you challenge the beast>")
-                theStarScrapper = Characters("StarScrapper", [999999, 777, 100, 10, 333333], ["Purify", "Purify", "Time Roar2"], [1, 2])
+                theStarScrapper = Characters("StarScrapper", [999999, 777, 100, 10, 333333], ["Purify", "onebit", "Time Roar2"], [1, 2])
                 mc.battle(theStarScrapper)
                 if mc.get_health() > 0:
                     mc.spend_gold(-500)
@@ -1670,8 +1674,14 @@ if chapter == 9:
     print("<you march on, towards the future>")
     skip_engine(4)
     print("<chapter 7 end>")
-    chapter = 10
+    chapter = 100
 saver(chapter)
+if chapter == 100:
+    print("<take a moment of rest>")
+    skip_engine(4)
+    print("<within the Starscrapper>")
+    skip_engine(4)
+    aquatic_city(knight, 7)
 if chapter == 10:
     skip_engine(4)
     print("<running through explosion and rubble...")
