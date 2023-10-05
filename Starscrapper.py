@@ -312,7 +312,8 @@ class Characters:
                     self._attack += 10
                     self._hitratio += 10
                     enemy.damage(self._attack, self._hitratio*10)
-                    self._hitratio -= 10
+                    self._hitratio -= 5
+                    self._defence += 2
                     self._attack += 10
                     self._magic -= 2
                     self._health -= 2
