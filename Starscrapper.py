@@ -90,8 +90,8 @@ class Characters:
                 else:
                     self._maxmagic += 5
     def levelup(self):
-        self._exp+=90-self._level
-        if self._exp >= 200:
+        self._exp+=100-self._level
+        if self._exp >= 100*self._level:
             print("LVL UP")
             time.sleep(0.3)
             self._level += 1
