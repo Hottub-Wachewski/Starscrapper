@@ -317,7 +317,7 @@ class Characters:
             elif enemy.get_skills()[enemyskillet] == "Aura Force":
                 print("[Enemy]: Aura Force")
                 print("<enemy gains health>")
-                enemy.damage(-3, 100000000)
+                enemy.damage(enemy.get_defence(), 100000000)
             elif enemy.get_skills()[enemyskillet] == "God Scape":
                 print("[Enemy]: God Scape")
                 print("<the ground distorts bellow you>")
@@ -555,7 +555,7 @@ def random_cotton():
     elif roll >= 60:
         enemy = Characters("Healer Fox, Rapper", [999, 1, 40, 20, 10], ["Purify", "Purify", "void2"], [1, 2])
     elif roll >= 30:
-        enemy = Characters("Beautiful Pirate, Rami", [9999, 99, 99, 1, 5000], ["Aura Force", "Aura Force", "Vamp Bite"], [1, 2])
+        enemy = Characters("Beautiful Pirate, Rami", [9999, 99, 99, 1, 5000], ["Aura Force", "void2", "Vamp Bite"], [1, 2])
     else:
         enemy = Characters("Ship Builder, Jincake", [999999, 1, 99999, 99, 999], ["void2", "void2", "void2"], [1, 2])
     return enemy
