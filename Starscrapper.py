@@ -305,7 +305,6 @@ class Characters:
                     print("Everything Slows Down")
                     self._hitratio += 15
                     self._defence += 3
-                    self._magic -= 2
                     self._health -= 2
                 elif self._skillist[skillet] == "Star Blaster":
                     print("BANG!!!")
