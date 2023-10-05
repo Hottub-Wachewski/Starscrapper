@@ -959,7 +959,7 @@ if chapter == 0:
     skip_engine(2)
     mc.battle(finalboss)
     mc.levelup()
-    finalboss.levelup()
+    finalboss.slevelup()
     mc.reset()
     finalboss.reset()
     print("      <...>")
