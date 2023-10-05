@@ -71,7 +71,7 @@ class Characters:
         self._defence = self._ogdefence
         self._attack = self._ogattack
     def slevelup(self):
-        self._exp+=76-self._level
+        self._exp+=100
         if self._exp >= 100:
             self._level += 1
             self._exp = 0
@@ -89,44 +89,6 @@ class Characters:
                     self._maxhealth += 10
                 else:
                     self._maxmagic += 5
-        if self._name!="Knight":
-            output_file = open("Starscrapper.txt", "w")
-            output_file.write(str(self._level))
-            output_file.close()
-            output_file = open("ssat.txt", "w")
-            output_file.write(str(self._ogattack))
-            output_file.close()
-            output_file = open("ssdf.txt", "w")
-            output_file.write(str(self._ogdefence))
-            output_file.close()
-            output_file = open("sshp.txt", "w")
-            output_file.write(str(self._maxhealth))
-            output_file.close()
-            output_file = open("sshr.txt", "w")
-            output_file.write(str(self._oghitratio))
-            output_file.close()
-            output_file = open("ssmg.txt", "w")
-            output_file.write(str(self._maxmagic))
-            output_file.close()
-        else:
-            output_file = open("Knightlv.txt", "w")
-            output_file.write(str(self._level))
-            output_file.close()
-            output_file = open("Kat.txt", "w")
-            output_file.write(str(self._ogattack))
-            output_file.close()
-            output_file = open("Kdf.txt", "w")
-            output_file.write(str(self._ogdefence))
-            output_file.close()
-            output_file = open("Khp.txt", "w")
-            output_file.write(str(self._maxhealth))
-            output_file.close()
-            output_file = open("Khr.txt", "w")
-            output_file.write(str(self._oghitratio))
-            output_file.close()
-            output_file = open("Kmg.txt", "w")
-            output_file.write(str(self._maxmagic))
-            output_file.close()
     def levelup(self):
         self._exp+=90-self._level
         if self._exp >= 200:
@@ -343,6 +305,15 @@ class Characters:
                     self._health-=enemy.get_attack()
                 else:
                     print("Miss")
+            elif enemy.get_skills()[enemyskillet] == "void2":
+                print("[Enemy]: Attack")
+                roll = random.randint(0, enemy.get_hitratio())
+                if roll>self._defence:
+                    print("Hit")
+                    self._health-=enemy.get_attack()
+                else:
+                    print("Miss")
+                enemy.slevelup()
             elif enemy.get_skills()[enemyskillet] == "Aura Force":
                 print("[Enemy]: Aura Force")
                 print("<enemy gains health>")
@@ -534,7 +505,7 @@ def random_encounter():
     if roll == 1:
         enemy = Characters("Lord of Sea Thieves, 'Cotton Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
     elif roll <= 5:
-        enemy = Characters("Colossus", [999, 10, 50, 5, 1], ["Purify", "void", "Time Roar"], [1, 2])
+        enemy = Characters("Colossus", [999, 10, 50, 5, 1], ["Purify", "void2", "Time Roar"], [1, 2])
     elif roll >= 50:
         enemy = Characters("mini golem", [50, 2, 20, 1, 25], ["void", "void", "void"], [1, 2])
     else:
@@ -543,7 +514,7 @@ def random_encounter():
 def random_encounter2():
     roll = random.randint(0, 70)
     if roll <= 5:
-        enemy = Characters("Titan", [999, 30, 100, 10, 1], ["void", "void", "Purify"], [1, 2])
+        enemy = Characters("Titan", [999, 30, 100, 10, 1], ["void", "void2", "Purify"], [1, 2])
     elif roll >= 50:
         enemy = Characters("bear", [30, 5, 35, 1, 25], ["void", "void", "void"], [1, 2])
     else:
@@ -578,15 +549,15 @@ def random_encounter4():
 def random_cotton():
     roll = random.randint(0, 91)
     if roll == 1:
-        enemy = Characters("Hero Hunter, Zonji", [9999, 50, 50, 10, 9000], ["void", "void", "Rest"], [1, 2])
+        enemy = Characters("Hero Hunter, Zonji", [9999, 50, 50, 10, 9000], ["void2", "void2", "Rest"], [1, 2])
     elif roll == 2:
         enemy = Characters("Lord of Sea Thieves, 'Cotton Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
     elif roll >= 60:
-        enemy = Characters("Healer Fox, Rapper", [999, 1, 40, 20, 10], ["Purify", "Purify", "Purify"], [1, 2])
+        enemy = Characters("Healer Fox, Rapper", [999, 1, 40, 20, 10], ["Purify", "Purify", "void2"], [1, 2])
     elif roll >= 30:
         enemy = Characters("Beautiful Pirate, Rami", [9999, 99, 99, 1, 5000], ["Aura Force", "Aura Force", "Vamp Bite"], [1, 2])
     else:
-        enemy = Characters("Ship Builder, Jincake", [999999, 1, 99999, 99, 999], ["void", "void", "void"], [1, 2])
+        enemy = Characters("Ship Builder, Jincake", [999999, 1, 99999, 99, 999], ["void2", "void2", "void2"], [1, 2])
     return enemy
 def astral_space(mc):
     action = "0"
