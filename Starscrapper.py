@@ -575,6 +575,19 @@ def random_encounter4():
     else:
         enemy = Characters("Shadow Fiend", [60, 5, 40, 10, 50], ["void", "void", "void"], [1, 2])
     return enemy
+def random_cotton():
+    roll = random.randint(0, 91)
+    if roll == 1:
+        enemy = Characters("Hero Hunter, Zonji", [9999, 50, 50, 10, 9000], ["void", "void", "Rest"], [1, 2])
+    elif roll == 2:
+        enemy = Characters("Lord of Sea Thieves, 'Cotton Hat'", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
+    elif roll >= 60:
+        enemy = Characters("Healer Fox, Rapper", [999, 1, 40, 20, 10], ["Purify", "Purify", "Purify"], [1, 2])
+    elif roll >= 30:
+        enemy = Characters("Beautiful Pirate, Rami", [9999, 99, 99, 1, 5000], ["Aura Force", "Aura Force", "Vamp Bite"], [1, 2])
+    else:
+        enemy = Characters("Ship Builder, Jincake", [999999, 1, 99999, 99, 999], ["void", "void", "void"], [1, 2])
+    return enemy
 def astral_space(mc):
     action = "0"
     while mc.get_health() > 0 and action != "3":
