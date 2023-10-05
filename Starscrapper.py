@@ -457,25 +457,25 @@ class Characters:
                         self._hitratio += 5
                 time.sleep(0.3)
             for i in status:
-                if status[i] == "burn-enemy":
+                if i == "burn-enemy":
                     print("burned - enemy")
                     enemy.damage(self._defence, 777)
-                if status[i] == "regen-enemy":
+                if i == "regen-enemy":
                     print("heal - enemy")
                     enemy.damage(self._defence * -1, 777)
-                if status[i] == "stick-enemy":
+                if i == "stick-enemy":
                     print("stick - enemy")
                     self._hitratio += 2
                     self._defence += 1
-                if status[i] == "burn-self":
+                if i == "burn-self":
                     print("burned - player")
                     self._health -= self._defence
-                if status[i] == "regen-self":
+                if i == "regen-self":
                     print("heal - self")
                     self._health += self._defence
                     if self._health > self._maxhealth:
                         self._health = self._maxhealth
-                if status[i] == "stick-self":
+                if i == "stick-self":
                     print("stick - self")
                     self._hitratio -= 1
                     if self._hitratio <=0:
