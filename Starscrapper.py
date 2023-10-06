@@ -1157,6 +1157,7 @@ if chapter == 1:
             print("[???] then I don't have to feel bad about this")
             skip_engine(2)
             mc.levelup()
+            mc.levelup()
         print("<you suddenly pass out>")
         i=2
     while i == 2:
