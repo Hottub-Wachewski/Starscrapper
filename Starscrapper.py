@@ -90,14 +90,14 @@ class Characters:
                 else:
                     self._maxmagic += 5
     def levelup(self):
-        self._exp+=100-self._level
+        self._exp+=200-self._level
         if self._exp >= 100*self._level:
             print("LVL UP")
             time.sleep(0.3)
             self._level += 1
             self._exp = 0
             x = 0
-            while x < 3:
+            while x < 5:
                 x += 1
                 roll = random.randint(1, 5)
                 if roll == 1:
