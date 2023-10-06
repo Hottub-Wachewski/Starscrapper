@@ -97,29 +97,39 @@ class Characters:
             self._level += 1
             self._exp = 0
             x = 0
-            while x < 5:
+            atk = 0
+            hr = 0
+            df = 0
+            hp = 0
+            mp = 0
+            while x < self._level//3:
                 x += 1
                 roll = random.randint(1, 5)
                 if roll == 1:
                     self._ogattack += 3
-                    print("<attack up>")
+                    atk += 1
                     time.sleep(0.3)
                 elif roll == 2:
                     self._oghitratio += 1
-                    print("<hit ratio up>")
+                    hr += 1
                     time.sleep(0.3)
                 elif roll == 3:
                     self._ogdefence += 1
-                    print("<defence up>")
+                    df += 1
                     time.sleep(0.3)
                 elif roll == 4:
                     self._maxhealth += 10
-                    print("<health up>")
+                    hp += 1
                     time.sleep(0.3)
                 else:
                     self._maxmagic += 5
-                    print("<magic up>")
+                    mp += 1
                     time.sleep(0.3)
+            print("<Health Up>", hp)
+            print("<Magic Up>", mp)
+            print("<Attack Up>", atk)
+            print("<Hit Rate Up>", hr)
+            print("<Defense Up>", df)
         if self._level >= 20:
             self._skillist[0] = "Monster Form"
         if self._level >= 25:
