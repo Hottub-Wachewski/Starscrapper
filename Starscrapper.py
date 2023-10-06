@@ -128,8 +128,10 @@ class Characters:
             self._skillist[1] = "Fruit of God"
         if self._level >= 65:
             self._skillist[0] = "Star Scrapper"
-        if self._level >= 80:
+        if self._level >= 80 and self._name != "Knight":
             self._skillist[2] = "Star Blaster"
+        if self._level >= 80 and self._name == "Knight":
+            self._skillist[2] = "World's Formation"
     def saveme(self):
         if self._name!="Knight":
             output_file = open("Starscrapper.txt", "w")
@@ -278,11 +280,22 @@ class Characters:
                     self._attack += 10
                     self._magic -= 2
                     self._health -= 2
+                elif self._skillist[skillet] == "World's Formation":
+                    print("Get Ready For The Final Attack")
+                    self._attack += self._defence*2
+                    self._hitratio += self._defence*2
+                    self._magic += self._defence
+                    self._health += self._defence
+                    skillskillet = 3
+                    if self._health > self._maxhealth:
+                        self._health = self._maxhealth
                 elif self._skillist[skillet] == "Great Regen":
                     print("A Great Energy Covers You")
                     self._magic += 6
                     self._health += self._magic
                     self._magic -= 8
+                    if self._health > self._maxhealth:
+                        self._health = self._maxhealth
             elif action == "4":
                 print("[???] you are a silly fool")
                 time.sleep(0.9)
