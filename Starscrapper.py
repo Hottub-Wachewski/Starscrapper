@@ -125,11 +125,11 @@ class Characters:
                     self._maxmagic += 5
                     mp += 1
                     time.sleep(0.3)
-            print("<Health Up>", hp)
-            print("<Magic Up>", mp)
-            print("<Attack Up>", atk)
-            print("<Hit Rate Up>", hr)
-            print("<Defense Up>", df)
+            print("  <Health Up>    ", hp)
+            print("  <Magic Up>     ", mp)
+            print("  <Attack Up>    ", atk)
+            print("  <Hit Rate Up>  ", hr)
+            print("  <Defense Up>   ", df)
         if self._level >= 20:
             self._skillist[0] = "Monster Form"
         if self._level >= 25:
