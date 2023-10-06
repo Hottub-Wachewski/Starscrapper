@@ -252,13 +252,22 @@ class Characters:
                 elif self._skillist[skillet] == "Pain Remover":
                     print("It Reads 'takes the edge off'")
                     self._health += self._magic
+                    self._attack -= 2
+                    self._defence += 1
+                    if self._attack <= 0:
+                        self._attack == 1
+                    if self._hitratio < self._defence:
+                        self._defence -= 2
+                        self._hitratio += 2
+                    if self._defence <= 0:
+                        self._defence = 1
                     if self._health > self._maxhealth:
                         self._health = self._maxhealth
                 elif self._skillist[skillet] == "Over Joyed Trick":
                     print("Yay!")
                     self._health = self._maxhealth//2
                     self._hitratio += 100
-                    self._defence = 0
+                    self._defence = 1
                 elif self._skillist[skillet] == "Monster Form":
                     print("You Grow Ever So Monsterous")
                     enemy.damage(self._attack, self._hitratio)
@@ -1060,7 +1069,6 @@ if chapter == 0:
     else:
         knight = Characters("Knight", [40, 6, 15, 2, 5], ["Transform", "Pain Remover", "Deathless Trick"], [1, 2])
     knight.reset()
-    knight.slevelup()
 saver(chapter)
 if chapter == 0:
     print("[voices] brilliant")
