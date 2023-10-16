@@ -102,7 +102,7 @@ class Characters:
             df = 0
             hp = 0
             mp = 0
-            while x < self._level//3:
+            while x < 1 + self._level//3:
                 x += 1
                 roll = random.randint(1, 5)
                 if roll == 1:
