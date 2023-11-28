@@ -249,6 +249,9 @@ class Characters:
                     print("Just In Time")
                     self._health += enemy.get_attack()
                     self._hitratio += 3
+                    roll = random.randint(1,5)
+                    if roll == 5:
+                        status.insert(0 , "stick-enemy")
                 elif self._skillist[skillet] == "Pain Remover":
                     print("It Reads 'takes the edge off'")
                     self._health += self._magic
@@ -450,6 +453,12 @@ class Characters:
                     status.insert(0, "stick-enemy")
                     self._defence += 1
                     self._attack += 2
+                    roll = random.randint(1,10)
+                    if roll == 10:
+                        self._defence += 3
+                        self._attack += 6
+                        print("<go even farther!>")
+                        status.insert(0 , "burn-self")
                 elif self._partyskills[skillskillet] == "The Hunt":
                     print("[Effect]: Narator?'s Cursed Skin?")
                     self._attack += 3
@@ -457,13 +466,17 @@ class Characters:
                     self._partyskills[skillskillet] = "Big Bang"
                 elif self._partyskills[skillskillet] == "Big Bang":
                     print("[Effect]: Narator?'s Cursed Skin?")
-                    self._magic += 3
+                    self._magic += 5
                     self._defence += 5
                     self._partyskills[skillskillet] = "The Hunt"
                 elif self._partyskills[skillskillet] == "Explosion":
                     print("[Effect]: EXPLOSION???")
                     self._attack += 10
                     self._hitratio += 10
+                    roll = random.randint(1,5)
+                    if roll >= 3:
+                        status.insert(0 , "burn-enemy")
+                        status.insert(0 , "burn-self")
                 elif self._partyskills[skillskillet] == "Team Attack":
                     print("[Effect]: Bonus Round")
                     print("[Type]: Team Attack")
