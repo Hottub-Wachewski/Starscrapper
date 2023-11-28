@@ -527,6 +527,8 @@ class Characters:
                     self._hitratio -= 1
                     if self._hitratio <=0:
                         self._hitratio = 1
+            while len(status) > 3:
+                status.pop(-1)
             if self._party > 0 and enemy.get_health() < enemy.get_magic():
                 roll = random.randint(1, 10)
                 if roll == 5:
