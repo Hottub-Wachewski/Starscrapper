@@ -527,7 +527,6 @@ class Characters:
                     self._hitratio -= 1
                     if self._hitratio <=0:
                         self._hitratio = 1
-            status = []
             if self._party > 0 and enemy.get_health() < enemy.get_magic():
                 roll = random.randint(1, 10)
                 if roll == 5:
@@ -544,6 +543,7 @@ class Characters:
         self._attack = self._ogattack
         self._hitratio = self._oghitratio
         self._defence = self._ogdefence
+        status = []
 enemy = Characters("Lord of Sea Thieves", [999999, 1, 99, 10, 500000], ["onebit", "onebit", "onebit"], [1, 2])
 def random_encounter():
     roll = random.randint(0, 70)
@@ -732,7 +732,7 @@ def mobile_city(mc, time):
 def shadow_city(mc, time):
     action = "0"
     day = 1
-    while mc.get_health() > 0 and day < time:
+    while day < time:
         while action != "1" and action != "2" and action != "3":
             print("<the ground seems to be glowing>")
             print("Option 1: Hunt")
