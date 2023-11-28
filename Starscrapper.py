@@ -506,7 +506,7 @@ class Characters:
             for i in status:
                 if i == "burn-enemy":
                     print("burned - enemy")
-                    enemy.damage(self._defence, 777)
+                    enemy.damage(self._defence, 999)
                 if i == "regen-enemy":
                     print("heal - enemy")
                     enemy.damage(self._defence * -1, 777)
@@ -1593,6 +1593,7 @@ mc.add_party(0, [])
 if chapter == 7:
     skip_engine(4)
     enemy = Characters("Narator?", [999, 9, 999, 10, 555], ["void", "void", "void"], [1, 2])
+    knight.reset()
     print("<Don joins your party>")
     knight.add_party(2, ["Dark Mode", "Petrify", "Break"])
     print("<you see a being in all white>")
